@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo</title>
+  <style>
+    .MessageLog {
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+      height: 524px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+    }
+    .MessageLog_Head {
+      flex: 0 0 auto;
+      margin: 0;
+      padding: 10px;
+      font-size: 18px;
+      line-height: 1.2;
+      background-color: #eee;
+    }
+    .MessageLog_Body {
+      flex: 1 1 auto;
+      background-color: tomato;
+    }
+  </style>
+</head>
+<body>
+
+<div class="MessageLog">
+  <h2 class="MessageLog_Head">ログ</h2>
+  <div class="MessageLog_Body">
+    <!-- ここにメッセージらが並ぶ... -->
+  </div>
+</div> 
+
+</body>
+</html>

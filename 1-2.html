@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo</title>
+  <style>
+    .MessageLog {
+      width: 300px;
+      height: 524px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      overflow: auto;
+    }
+    .MessageLog_Head {
+      position: sticky;
+      top: 0;
+      margin: 0;
+      padding: 10px;
+      font-size: 18px;
+      line-height: 1.2;
+      background-color: #eee;
+    }
+    .MessageLog_Body {
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background-color: tomato;
+    }
+    .MessageLog_Item {
+      height: 300px;
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+
+<div class="MessageLog">
+  <h2 class="MessageLog_Head">ログ</h2>
+  <div class="MessageLog_Body">
+    <div class="MessageLog_Item">1</div>
+    <div class="MessageLog_Item">2</div>
+    <div class="MessageLog_Item">3</div>
+    <div class="MessageLog_Item">4</div>
+    <div class="MessageLog_Item">5</div>
+  </div>
+</div>
+
+</body>
+</html>
