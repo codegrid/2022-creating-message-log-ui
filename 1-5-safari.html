@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo</title>
+  <style>
+    /* 外側 */
+    .MessageLog {
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+      height: 524px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+    }
+    .MessageLog_Head {
+      flex: 0 0 auto;
+      margin: 0;
+      padding: 10px;
+      font-size: 18px;
+      line-height: 1.2;
+      background-color: #eee;
+    }
+    .MessageLog_Body {
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column-reverse;
+      padding: 10px;
+      overflow: auto;
+    }
+    .MessageLog_Inner {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;  
+    }
+    /* Safari（Webkit）向けの対応 */
+    @supports (writing-mode: horizontal-bt) {
+      .MessageLog_Body {
+        display: block; /* display: flex;でなくする */
+        writing-mode: horizontal-bt; /* 縦書き下から上にする */
+      }
+      .MessageLog_Inner {
+        writing-mode: horizontal-tb; /* 縦書き上から下に戻す */
+        will-change: opacity; /* おまじない */
+      } 
+    }
+    /* メッセージ */
+    .Message {
+      display: grid;
+      grid-template:
+        "img name" auto
+        "img text" auto
+        /auto minmax(0, 1fr)
+      ;
+      gap: 4px;
+      margin: 0;
+    }
+    .Message_Img {
+      grid-area: img;
+      align-self: start;
+      width: 30px;
+      height: 30px;
+    }
+    .Message_Name {
+      grid-area: name;
+      font-weight: bold;
+      font-size: 12px;
+      line-height: 1;
+    }
+    .Message_Text {
+      grid-area: text;
+      font-size: 16px;
+      line-height: 1.2;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+  </style>
+</head>
+<body>
+
+<button type="button" id="add">新しいメッセージを追加する</button>
+<button type="button" id="reset">リセットする</button>
+<hr>
+
+<div class="MessageLog">
+  <h2 class="MessageLog_Head">ログ</h2>
+  <div class="MessageLog_Body">
+    <div class="MessageLog_Inner">
+      <!-- ここにメッセージらが並ぶ... -->
+    </div>
+  </div>
+</div>
+
+<script>
+const html = (idx) => `
+<p class="Message">
+  <img class="Message_Img" src="./img/avatar.png" alt="">
+  <b class="Message_Name">名前</b>
+  <span class="Message_Text">${idx}.メッセージ本文です。メッセージ本文です。</span>
+</p>
+`;
+
+let idx = 1;
+const add = document.querySelector('#add');
+const reset = document.querySelector('#reset');
+const container = document.querySelector('.MessageLog_Inner');
+
+add.addEventListener('click', ()=>{
+  container.innerHTML += html(idx);
+  idx++;  
+});
+
+reset.addEventListener('click', ()=>{
+  container.innerHTML = "";
+  idx = 1;
+});
+</script>
+
+</body>
+</html>
