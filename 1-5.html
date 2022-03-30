@@ -62,7 +62,6 @@
       grid-area: text;
       font-size: 16px;
       line-height: 1.2;
-      word-break: keep-all;
       overflow-wrap: break-word;
     }
   </style>
@@ -87,7 +86,7 @@ const html = (idx) => `
 <p class="Message">
   <img class="Message_Img" src="./img/avatar.png" alt="">
   <b class="Message_Name">名前</b>
-  <span class="Message_Text">${idx}.メッセージ本文です。メッセージ本文です。</span>
+  <span class="Message_Text">${idx}.メッセージ本文です。${idx%4 ? "メッセージ本文です。" : "https://example.com/?param=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}</span>
 </p>
 `;
 
